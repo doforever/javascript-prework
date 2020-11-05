@@ -6,15 +6,52 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="container">
-		<div id="buttons">
-            <button id="play-rock">Kamień</button>
-            <button id="play-paper">Papier</button>
-            <button id="play-scissors">Nożyce</button>
+    <header>
+        <h1>Papier, nożyce, kamień</h1>
+        <p>Opis gry</p>
+    </header>
+    <section class="menu">
+        <div class="container">
+            <h2>Wybierz wariant gry</h2>
+            <div class="row">
+                <div class="col">
+                    <button id="g-standard">Równe szanse</button>
+                </div>
+                <div class="col">
+                    <p>Obaj gracze mają takie same szanse</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button id="g-easy">Łatwy</button>
+                </div>
+                <div class="col">
+                    <p>Komputer przegrywa w 75% rozegranych rund</p>
+                </div>
+            </div>
         </div>
-		<div id="messages"></div>
-	</div>
-	<script src="js/functions.js"></script>
-	<script src="js/script.js"></script>
+    </section>
+	<section class="game">
+        <div class="container">
+        		<div class="row">
+                    <div class="col">
+                        <div id="buttons">
+                            <button id="play-rock">Kamień</button>
+                            <button id="play-paper">Papier</button>
+                            <button id="play-scissors">Nożyce</button>
+                        </div>
+                        <div id="messages"></div>
+                    </div>
+                    <div class="col board">
+                        <h2>Wynik gry<h2>
+                        <p>Komputer : Gracz</p>
+                        <div id="result"></div>
+                        <button id="reset">Nowa gra</button>
+                    </div>
+                </div>
+        	</div>
+    </section>
+    <script src="js/functions.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,44 @@
+/* General */
+.container {
+  padding: 0 20px;
+  max-width: 1140px;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 -15px;
+}
+
+.col {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex: 1;
+      flex: 1;
+  padding: 0 15px;
+}
+
+section, header, footer {
+  padding: 40px 0;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+/* Header */
+/* Menu */
+.menu div:first-child.col {
+  -ms-flex-align: end;
+      align-items: flex-end;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+
+/* Game */
+.board {
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
