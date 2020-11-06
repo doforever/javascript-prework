@@ -1,13 +1,7 @@
-document.getElementById('play-rock').addEventListener('click', function(){
-    playGame(1);
-});
-
-document.getElementById('play-paper').addEventListener('click', function(){
-    playGame(2);
-});
-
-document.getElementById('play-scissors').addEventListener('click', function(){
-    playGame(3);
+document.querySelector('#buttons').addEventListener('click', function(event){
+    if (event.target.tagName === "BUTTON"){
+    playGame(parseInt(event.target.dataset.choice));
+    }
 });
 
 document.getElementById('g-standard').addEventListener('click', function(){
@@ -21,12 +15,13 @@ document.getElementById('g-easy').addEventListener('click', function(){
 });
 
 document.getElementById('reset').addEventListener('click', function(){
-    pointsPlayer = 0;
-    pointsComputer = 0;
+    result = clearResult();
     displayResult();
     console.log('New game');
 });
 
-let pointsPlayer = 0;
-let pointsComputer = 0;
+
 let gVariant = 'standard';
+let result = clearResult();
+
+displayResult();

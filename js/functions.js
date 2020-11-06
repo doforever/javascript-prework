@@ -1,5 +1,5 @@
 function printMessage(msg){
-	let div = document.createElement('div');
+	const div = document.createElement('div');
 	div.innerHTML = msg;
 	document.getElementById('messages').appendChild(div);
 }
@@ -8,92 +8,100 @@ function clearMessages(){
 	document.getElementById('messages').innerHTML = '';
 }
 
-function getMoveName(argMoveId){
-    if(argMoveId == 1){
-      return 'kamień';
-    } else if (argMoveId == 2){
-        return 'papier';
-    } else if (argMoveId == 3) {
-        return 'nożyce';
-    } else {
-      printMessage('Nie znam ruchu o id ' + argMoveId + '.');
-      return 'nieznany ruch';
-    }
+function getMoveName(moveId){
+    if(moveId === 1) return 'kamień';
+    else if (moveId === 2) return 'papier';
+    else return 'nożyce';
 }
 
-function getResult(argPlayerMove) {
+function clearResult() {
+    return {
+        'playerMove': null,
+        'computerMove': null,
+        'playerWon': false,
+        'computerWon': false,
+        'pointsPlayer': 0,
+        'pointsComputer': 0
+    };
+}
 
-    let playerMove = argPlayerMove;
-    let randomNumber = getRandomNbr();
-    let computerMove = getMoveName(randomNumber);
-    
-    if( computerMove == 'kamień' && playerMove == 'papier'){
-        printMessage('Mój ruch to: ' + computerMove);
-        printMessage('Ty wygrywasz!');
-        pointsPlayer++;
-    } else if ( computerMove == 'papier' && playerMove == 'nożyce') {
-        printMessage('Mój ruch to: ' + computerMove);
-        printMessage('Ty wygrywasz!');
-        pointsPlayer++;
-    } else if (computerMove == 'nożyce' && playerMove == 'kamień') {
-        printMessage('Mój ruch to: ' + computerMove);
-        printMessage('Ty wygrywasz!');
-        pointsPlayer++;
-    } else if (computerMove == playerMove) {
-        printMessage('Mój ruch to: ' + computerMove);
-        printMessage('Jest remis :-)');
-    } else if (playerMove == 'nieznany ruch') {
-        printMessage('Mój ruch to: ' + computerMove);
-        printMessage('Wybierz 1, 2 lub 3');
-    } else if (gVariant == 'easy'){
-        randomNumber = getRandomNbr();
+function getResult(playerMove) {
+
+    let playerWon = false;
+    let computerWon = false;
+    let easyCheck = false;
+    let computerMove = null;
+
+    function determineWinner () {
+        let randomNumber = getRandomNbr();
         computerMove = getMoveName(randomNumber);
-        printMessage('Mój ruch to: ' + computerMove);
-        if( computerMove == 'kamień' && playerMove == 'papier'){
-            printMessage('Ty wygrywasz!');
-            pointsPlayer++;
-        } else if ( computerMove == 'papier' && playerMove == 'nożyce') {
-            printMessage('Ty wygrywasz!');
-            pointsPlayer++;
-        } else if (computerMove == 'nożyce' && playerMove == 'kamień') {
-            printMessage('Ty wygrywasz!');
-            pointsPlayer++;
+        console.log('Komputer wylosował: ' + computerMove);
+        if(( computerMove == 'kamień' && playerMove == 'papier')||( computerMove == 'papier' && playerMove == 'nożyce')||
+            (computerMove == 'nożyce' && playerMove == 'kamień')) {
+            playerWon = true;
+
         } else if (computerMove == playerMove) {
-            printMessage('Jest remis :-)');
-        } else if (playerMove == 'nieznany ruch') {
-            printMessage('Wybierz 1, 2 lub 3');
-        } else {          
-            printMessage('Ja wygrywam!');
-            pointsComputer++;
+            
+        } else if (gVariant == 'easy' && !easyCheck){
+            easyCheck = true;
+            determineWinner();
+        } else {
+            computerWon = true;
         }
-    } else {
-        printMessage('Mój ruch to: ' + computerMove);
-        printMessage('Ja wygrywam!');
-        pointsComputer++;
     }
+
+    determineWinner();
+
+    return {
+        'playerMove': playerMove,
+        'computerMove': computerMove,
+        'playerWon': playerWon,
+        'computerWon': computerWon,
+        'pointsPlayer': result.pointsPlayer,
+        'pointsComputer': result.pointsComputer
+    }
+    
 }
 
 function getRandomNbr() {
-    let randomNumber = Math.floor(Math.random() * 3 + 1);
-    console.log('Wylosowana liczba to: ' + randomNumber);
-    return randomNumber;
+    return randomNumber = Math.floor(Math.random() * 3 + 1);
 }
 
 function displayResult() {
-    document.getElementById('result').innerHTML = pointsComputer + ' : ' + pointsPlayer;
+    console.log('Displaying result');
+    console.dir(result);
+
+    if (result.playerMove) {
+        printMessage('Twój ruch to: ' + result.playerMove);
+        printMessage('Mój ruch to: ' + result.computerMove);
+        
+        if (result.computerWon) {
+            printMessage('Ja wygrywam!');
+        } else if (result.playerWon) {
+            printMessage('Ty wygrywasz!');
+        } else {
+            printMessage('Jest remis :-)');
+        }
+    } else {
+        clearMessages();
+    }
+    document.getElementById('result').innerHTML = result.pointsComputer + ' : ' + result.pointsPlayer;
 }
 
-function playGame(argPlayerInput) {
-    clearMessages();
-    let playerInput = argPlayerInput;
-    console.log('Gracz wpisał: ' + playerInput);
+function playGame(playerInput) {
+    clearMessages();    
+    const playerMove = getMoveName(playerInput);
+    console.log('Gracz wybrał: ' + playerMove);
     
-    let playerMove = getMoveName(playerInput);
-    printMessage('Twój ruch to: ' + playerMove);
-    
-    getResult(playerMove);
-       
-    console.log('Komputer:Gracz',pointsComputer,pointsPlayer);
+    result = getResult(playerMove);
 
-    displayResult();
+    if (result.computerWon) {
+        result.pointsComputer++;
+    }
+
+    if (result.playerWon) {
+        result.pointsPlayer ++;
+    }
+       
+    displayResult(result);
 }
