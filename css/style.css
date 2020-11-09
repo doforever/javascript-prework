@@ -100,7 +100,8 @@ header h1 {
 
 /* Game */
 .game {
-  background-color: #E9806E;
+  background-color: #7A306C;
+  padding: 25px 0;
 }
 
 .game .game-main > div:last-child {

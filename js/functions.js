@@ -105,3 +105,19 @@ function playGame(playerInput) {
        
     displayResult(result);
 }
+
+function chooseVariant (buttonId){
+    
+    if (buttonId == 'g-easy'){
+        gVariant = 'easy';
+        console.log('Game variant easy');
+        buttonEasy.style.background = '#7A306C';
+        buttonStd.style.background = '#599183';
+    }
+    if (buttonId == 'g-standard'){
+        gVariant = 'standard';
+        console.log('Game variant standard');
+        buttonStd.style.background = '#7A306C';
+        buttonEasy.style.background = '#599183';
+    }
+}

@@ -2,7 +2,7 @@
 
 $color-b-light: #DBDEE6;
 $color-light: #F5F4F6;
-$color-accent: #E9806E;
+$color-accent: #7A306C;
 $color-main: #599183;
 $color-d-main:  #4e8073;
 $font-2: 'Amatic SC', cursive;
@@ -109,6 +109,7 @@ header {
 
 .game {
     background-color: $color-accent;
+    padding: 25px 0;
 
     .game-main {
         &>div:last-child {
