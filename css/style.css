@@ -1,13 +1,27 @@
+/* Variables */
 /* General */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #DBDEE6;
+  font-family: "Pangolin", cursive;
+}
+
 .container {
   padding: 0 20px;
   max-width: 1140px;
+  margin: 0 auto;
 }
 
 .row {
   display: -ms-flexbox;
   display: flex;
   margin: 0 -15px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .col {
@@ -17,28 +31,110 @@
       flex-direction: column;
   -ms-flex: 1;
       flex: 1;
-  padding: 0 15px;
-}
-
-section, header, footer {
-  padding: 40px 0;
-}
-
-h1, h2 {
-  text-align: center;
-}
-
-/* Header */
-/* Menu */
-.menu div:first-child.col {
-  -ms-flex-align: end;
-      align-items: flex-end;
+  padding: 15px;
   -ms-flex-pack: center;
       justify-content: center;
 }
 
-/* Game */
-.board {
+.box {
+  background-color: #F5F4F6;
+  height: 100%;
+  padding: 15px;
+  min-width: 300px;
+}
+
+section, header, footer {
+  padding: 10px 0;
+}
+
+h1, h2 {
   text-align: center;
+  font-family: "Amatic SC", cursive;
+}
+
+h2 {
+  font-size: 36px;
+  margin: 15px 0;
+}
+
+p {
+  margin: 8px 0;
+}
+
+button {
+  background-color: #599183;
+  color: #F5F4F6;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  font-family: "Amatic SC", cursive;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.07rem;
+}
+
+button:hover {
+  background-color: #4e8073;
+}
+
+/* Header */
+header h1 {
+  font-size: 48px;
+}
+
+/* About */
+.about .picture {
+  text-align: center;
+  background-color: #DBDEE6;
+}
+
+.menu div:first-child.col {
+  -ms-flex-align: end;
+      align-items: flex-end;
+}
+
+.menu button {
+  margin: 8px 0;
+}
+
+/* Game */
+.game {
+  background-color: #E9806E;
+}
+
+.game .game-main > div:last-child {
+  padding: 15px;
+}
+
+.game .buttons {
+  text-align: center;
+}
+
+.game .board {
+  text-align: center;
+}
+
+@media only screen and (max-width: 370px) {
+  body {
+    font-size: 14px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  .col {
+    padding: 10px;
+  }
+  .box {
+    min-width: 200px;
+  }
+  button {
+    font-size: 18px;
+    letter-spacing: 0.07rem;
+    margin: 7px;
+  }
+  header h1 {
+    font-size: 36px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,44 +1,159 @@
+/* Variables */
+
+$color-b-light: #DBDEE6;
+$color-light: #F5F4F6;
+$color-accent: #E9806E;
+$color-main: #599183;
+$color-d-main:  #4e8073;
+$font-2: 'Amatic SC', cursive;
+$font-text: 'Pangolin', cursive;
+
+
 /* General */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: $color-b-light;
+    font-family: $font-text;
+}
 
 .container {
     padding: 0 20px;
     max-width: 1140px;
+    margin: 0 auto;
 }
 
 .row {
     display: flex;
     margin: 0 -15px;
+    flex-wrap: wrap;
 }
 
 .col {
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 0 15px;
+    padding: 15px;
+    justify-content: center;
+}
+
+.box {
+    background-color: $color-light;
+    height: 100%;
+    padding: 15px;
+    min-width: 300px;
 }
 
 section, header, footer {
-    padding: 40px 0;
+    padding: 10px 0;
 }
 
 h1, h2 {
     text-align: center;
+    font-family: $font-2;
 }
 
+h2 {
+    font-size: 36px;
+    margin: 15px 0;
+}
+
+p {
+    margin: 8px 0;
+}
+
+button {
+    background-color: $color-main;
+    color: $color-light;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    font-family: $font-2;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.07rem;
+    &:hover{
+        background-color: $color-d-main;
+    }
+}
 
 /* Header */
-
-/* Menu */
+header {
+    h1 {
+        font-size: 48px;
+    }
+}
+/* About */
+.about {
+    .picture {
+        text-align: center;
+        background-color: $color-b-light;
+    }   
+}
 
 .menu {
     div:first-child.col {
         align-items: flex-end;
-        justify-content: center;
+    }
+    button {
+        margin: 8px 0;
     }
 }
 
 /* Game */
 
-.board {
-    text-align: center;
+.game {
+    background-color: $color-accent;
+
+    .game-main {
+        &>div:last-child {
+            padding: 15px;
+        }
+    }
+
+    .buttons {
+        text-align: center;
+    }
+
+    .board {
+        text-align: center;
+    }
 }
+
+@media only screen and (max-width: 370px) {
+    
+    body {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    .col {
+        padding: 10px;
+    }
+
+    .box {
+        min-width: 200px;
+    }
+    
+    button {
+        font-size: 18px;
+        letter-spacing: 0.07rem;
+        margin: 7px;
+    }
+
+    header {
+        h1 {
+            font-size: 36px;
+        }
+    }
+}
+
+

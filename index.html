@@ -2,55 +2,99 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Kamień, papier, nożyce</title>
+    <title>Kamień, papier, nożyce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Pangolin&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <h1>Papier, nożyce, kamień</h1>
-        <p>Opis gry</p>
-    </header>
-    <section class="menu">
         <div class="container">
-            <h2>Wybierz wariant gry</h2>
+            <h1>Papier, nożyce, kamień</h1>
+        </div>
+    </header>
+    <section class="about">
+        <div class="container">
             <div class="row">
                 <div class="col">
-                    <button id="g-standard">Równe szanse</button>
+                    <div class="box picture">
+                        <img src="./images/game.png" alt="game">
+                    </div>
                 </div>
                 <div class="col">
-                    <p>Obaj gracze mają takie same szanse</p>
+                    <div class="box rules">
+                        <h2>Zasady gry</h2>
+                        <p>W każdej rundzie gracze wybierają papier, nożyce lub kamień.</p>
+                        <p>Wynik rundy może być następujący:
+                            <ul>
+                                <li>
+                                    remis – jeśli obaj gracze wybrali ten sam ruch,
+                                </li>
+                                <li>
+                                    wygrana gracza, który zagrał papier, jeśli drugi gracz zagrał kamień,
+                                </li>
+                                <li>
+                                    wygrana gracza, który zagrał kamień, jeśli drugi gracz zagrał nożyce,
+                                </li>
+                                <li>
+                                    wygrana gracza, który zagrał nożyce, jeśli drugi gracz zagrał papier.
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col">
-                    <button id="g-easy">Łatwy</button>
-                </div>
-                <div class="col">
-                    <p>Komputer przegrywa w 75% rozegranych rund</p>
+                    <div class="box menu">
+                        <h2>Wybierz wariant gry</h2>
+                        <div class="row">
+                            <div class="col">
+                                <button id="g-standard">Równe szanse</button>
+                            </div>
+                            <div class="col">
+                                <p>Obaj gracze mają takie same szanse</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button id="g-easy">Łatwy</button>
+                            </div>
+                            <div class="col">
+                                <p>Komputer przegrywa w 75% rozegranych rund</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-	<section class="game">
+    <section class="game">
         <div class="container">
-        		<div class="row">
-                    <div class="col">
-                        <div id="buttons">
+            <div class="row">
+                <div class="col">
+                    <div class="box game-main">
+                        <div class="buttons" id="buttons">
                             <button id="play-rock" data-choice="1">Kamień</button>
                             <button id="play-paper" data-choice="2">Papier</button>
                             <button id="play-scissors"data-choice="3">Nożyce</button>
                         </div>
                         <div id="messages"></div>
                     </div>
-                    <div class="col board">
+                </div>
+                <div class="col board">
+                    <div class="box">
                         <h2>Wynik gry<h2>
                         <p>Komputer : Gracz</p>
                         <div id="result"></div>
                         <button id="reset">Nowa gra</button>
                     </div>
                 </div>
-        	</div>
+            </div>
+        </div>
     </section>
+    <footer>
+        <div class="container">
+            <p>&copy; Dorota Tomala</p>
+        </div>
+    </footer>
     <script src="js/functions.js"></script>
     <script src="js/tests.js"></script>
     <script src="js/script.js"></script>
