@@ -82,6 +82,13 @@ button {
     }
 }
 
+.b-active {
+    background-color: $color-accent;
+    &:hover {
+        background-color: $color-accent;
+    }
+}
+
 /* Header */
 header {
     h1 {
@@ -93,7 +100,12 @@ header {
     .picture {
         text-align: center;
         background-color: $color-b-light;
-    }   
+    } 
+    .blowImg   {
+        transform: scale(1.6) translate(15px,50px);
+        transition: 1s all;
+
+    }
 }
 
 .menu {
@@ -153,6 +165,11 @@ header {
     header {
         h1 {
             font-size: 36px;
+        }
+    }
+    .about {
+        .blowImg {
+            transform: none;
         }
     }
 }

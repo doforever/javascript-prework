@@ -1,3 +1,5 @@
+'use strict';
+
 function printMessage(msg){
 	const div = document.createElement('div');
 	div.innerHTML = msg;
@@ -64,6 +66,7 @@ function getResult(playerMove) {
 }
 
 function getRandomNbr() {
+    let randomNumber = null;
     return randomNumber = Math.floor(Math.random() * 3 + 1);
 }
 
@@ -106,18 +109,25 @@ function playGame(playerInput) {
     displayResult(result);
 }
 
-function chooseVariant (buttonId){
+function chooseVariant(buttonId){
     
     if (buttonId == 'g-easy'){
         gVariant = 'easy';
         console.log('Game variant easy');
-        buttonEasy.style.background = '#7A306C';
-        buttonStd.style.background = '#599183';
+        buttonEasy.classList.add('b-active');
+        buttonStd.classList.remove('b-active');
     }
     if (buttonId == 'g-standard'){
         gVariant = 'standard';
         console.log('Game variant standard');
-        buttonStd.style.background = '#7A306C';
-        buttonEasy.style.background = '#599183';
+        buttonStd.classList.add('b-active');
+        buttonEasy.classList.remove('b-active');
     }
+}
+
+function blowImage(){
+    const img = document.querySelector('.picture>img');
+    console.log('Blowing image');
+    img.classList.add('blowImg');
+    setTimeout(function(){img.classList.remove('blowImg');}, 1000);
 }

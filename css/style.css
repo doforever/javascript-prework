@@ -78,6 +78,14 @@ button:hover {
   background-color: #4e8073;
 }
 
+.b-active {
+  background-color: #7A306C;
+}
+
+.b-active:hover {
+  background-color: #7A306C;
+}
+
 /* Header */
 header h1 {
   font-size: 48px;
@@ -87,6 +95,11 @@ header h1 {
 .about .picture {
   text-align: center;
   background-color: #DBDEE6;
+}
+
+.about .blowImg {
+  transform: scale(1.6) translate(15px, 50px);
+  transition: 1s all;
 }
 
 .menu div:first-child.col {
@@ -136,6 +149,9 @@ header h1 {
   }
   header h1 {
     font-size: 36px;
+  }
+  .about .blowImg {
+    transform: none;
   }
 }
 /*# sourceMappingURL=style.css.map */

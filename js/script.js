@@ -1,6 +1,9 @@
+'use strict';
+
 document.querySelector('#buttons').addEventListener('click', function(event){
     if (event.target.tagName === "BUTTON"){
-    playGame(parseInt(event.target.dataset.choice));
+        blowImage();
+        setTimeout(function(){playGame(parseInt(event.target.dataset.choice));}, 1000);
     }
 });
 
@@ -13,6 +16,7 @@ document.getElementById('reset').addEventListener('click', function(){
     displayResult();
     console.log('New game');
 });
+
 
 const buttonEasy = document.getElementById('g-easy');
 const buttonStd = document.getElementById('g-standard');
