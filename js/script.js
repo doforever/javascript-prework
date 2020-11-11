@@ -1,44 +1,6 @@
 'use strict';
-{
-    const getResult = function(playerMove) {
-
-        let playerWon = false;
-        let computerWon = false;
-        let easyCheck = false;
-        let computerMove = null;
-    
-        const determineWinner = function() {
-            let randomNumber = getRandomNbr();
-            computerMove = getMoveName(randomNumber);
-            console.log('Komputer wylosował: ' + computerMove);
-            if(( computerMove == 'kamień' && playerMove == 'papier')||( computerMove == 'papier' && playerMove == 'nożyce')||
-                (computerMove == 'nożyce' && playerMove == 'kamień')) {
-                playerWon = true;
-    
-            } else if (computerMove == playerMove) {
-                
-            } else if (gVariant == 'easy' && !easyCheck){
-                easyCheck = true;
-                determineWinner();
-            } else {
-                computerWon = true;
-            }
-        }
-    
-        determineWinner();
-    
-        return {
-            'playerMove': playerMove,
-            'computerMove': computerMove,
-            'playerWon': playerWon,
-            'computerWon': computerWon,
-            'pointsPlayer': result.pointsPlayer,
-            'pointsComputer': result.pointsComputer
-        }
-        
-    }
-
-    const displayResult = function() {
+{ 
+    const displayResult = function(result) {
         console.log('Displaying result');
         console.dir(result);
     
@@ -56,75 +18,69 @@
         } else {
             clearMessages();
         }
-        document.getElementById('result').innerHTML = result.pointsComputer + ' : ' + result.pointsPlayer;
+        document.getElementById('result').innerHTML = pointsComputer + ' : ' + pointsPlayer;
     }
-    
-    const playGame = function(playerInput) {
+
+    const playGame = function(playerInput, gVariant) {
         clearMessages();    
         const playerMove = getMoveName(playerInput);
         console.log('Gracz wybrał: ' + playerMove);
         
-        result = getResult(playerMove);
+        const result = getResult(playerMove, gVariant);
     
         if (result.computerWon) {
-            result.pointsComputer++;
+            pointsComputer++;
         }
     
         if (result.playerWon) {
-            result.pointsPlayer ++;
+            pointsPlayer ++;
         }
            
         displayResult(result);
     }
-    
+
     const chooseVariant = function(buttonId){
         
-        if (buttonId == 'g-easy'){
-            gVariant = 'easy';
+        if (buttonId == 'easy'){
             console.log('Game variant easy');
             buttonEasy.classList.add('b-active');
             buttonStd.classList.remove('b-active');
         }
-        if (buttonId == 'g-standard'){
-            gVariant = 'standard';
+        if (buttonId == 'standard'){
             console.log('Game variant standard');
             buttonStd.classList.add('b-active');
             buttonEasy.classList.remove('b-active');
         }
+        return buttonId;
     }
     
-    const blowImage = function(){
-        const img = document.querySelector('.picture>img');
-        console.log('Blowing image');
-        img.classList.add('blowImg');
-        setTimeout(function(){img.classList.remove('blowImg');}, 1000);
-    }
-
     document.querySelector('#buttons').addEventListener('click', function(event){
         if (event.target.tagName === "BUTTON"){
             blowImage();
-            setTimeout(function(){playGame(parseInt(event.target.dataset.choice));}, 1000);
+            setTimeout(function(){playGame(parseInt(event.target.dataset.choice), gVariant);}, 1000);
         }
     });
 
     document.querySelector('.menu').addEventListener('click', function(event){
-        chooseVariant(event.target.id);
+        gVariant = chooseVariant(event.target.id);
     });
 
     document.getElementById('reset').addEventListener('click', function(){
         result = clearResult();
-        displayResult();
+        pointsComputer = 0;
+        pointsPlayer = 0;
+        displayResult(result);
         console.log('New game');
     });
 
 
-    const buttonEasy = document.getElementById('g-easy');
-    const buttonStd = document.getElementById('g-standard');
+    const buttonEasy = document.getElementById('easy');
+    const buttonStd = document.getElementById('standard');
 
-    let gVariant = 'standard';
-    chooseVariant('g-standard');
+    let gVariant = chooseVariant('standard');
     let result = clearResult();
+    let pointsComputer = 0;
+    let pointsPlayer = 0;
 
-
-    displayResult();
+    displayResult(result);
 }
