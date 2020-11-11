@@ -1,13 +1,13 @@
 'use strict';
 {
-    function getResult(playerMove) {
+    const getResult = function(playerMove) {
 
         let playerWon = false;
         let computerWon = false;
         let easyCheck = false;
         let computerMove = null;
     
-        function determineWinner () {
+        const determineWinner = function() {
             let randomNumber = getRandomNbr();
             computerMove = getMoveName(randomNumber);
             console.log('Komputer wylosował: ' + computerMove);
@@ -38,7 +38,7 @@
         
     }
 
-    function displayResult() {
+    const displayResult = function() {
         console.log('Displaying result');
         console.dir(result);
     
@@ -59,7 +59,7 @@
         document.getElementById('result').innerHTML = result.pointsComputer + ' : ' + result.pointsPlayer;
     }
     
-    function playGame(playerInput) {
+    const playGame = function(playerInput) {
         clearMessages();    
         const playerMove = getMoveName(playerInput);
         console.log('Gracz wybrał: ' + playerMove);
@@ -77,7 +77,7 @@
         displayResult(result);
     }
     
-    function chooseVariant(buttonId){
+    const chooseVariant = function(buttonId){
         
         if (buttonId == 'g-easy'){
             gVariant = 'easy';
@@ -93,7 +93,7 @@
         }
     }
     
-    function blowImage(){
+    const blowImage = function(){
         const img = document.querySelector('.picture>img');
         console.log('Blowing image');
         img.classList.add('blowImg');

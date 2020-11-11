@@ -1,22 +1,22 @@
 'use strict';
 
-function printMessage(msg){
+const printMessage = function(msg){
 	const div = document.createElement('div');
 	div.innerHTML = msg;
 	document.getElementById('messages').appendChild(div);
 }
 
-function clearMessages(){
+const clearMessages = function(){
 	document.getElementById('messages').innerHTML = '';
 }
 
-function getMoveName(moveId){
+const getMoveName = function(moveId){
     if(moveId === 1) return 'kamień';
     else if (moveId === 2) return 'papier';
     else return 'nożyce';
 }
 
-function clearResult() {
+const clearResult = function() {
     return {
         'playerMove': null,
         'computerMove': null,
@@ -27,7 +27,6 @@ function clearResult() {
     };
 }
 
-function getRandomNbr() {
-    let randomNumber = null;
-    return randomNumber = Math.floor(Math.random() * 3 + 1);
+const getRandomNbr = function() {
+    return Math.floor(Math.random() * 3 + 1);
 }
